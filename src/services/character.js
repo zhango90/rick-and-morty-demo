@@ -8,9 +8,10 @@ export const usePaginatedCharacters = () => {
 
   const client = useClient();
   const {
-    data: { info, results },
+    data: { info, results } = {},
     isError,
     isFetching,
+    isLoading,
     isPreviousData
   } = useQuery(["character", page], () => client("character?page=" + page), {
     keepPreviousData: true,
@@ -20,7 +21,7 @@ export const usePaginatedCharacters = () => {
   useEffect(() => {
     if (info?.next) {
       queryClient.prefetchQuery(["character", page + 1], () =>
-        client("character?page=" + page + 1)
+        client("character?page=" + (page + 1))
       );
     }
   }, [info, page, queryClient, client]);
@@ -33,6 +34,7 @@ export const usePaginatedCharacters = () => {
     info,
     results,
     isError,
+    isLoading,
     isFetching,
     isPreviousData,
     handleNextPage,

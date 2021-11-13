@@ -19,12 +19,12 @@ export const client = async (
   const url = `${apiURL}/${endpoint}`;
 
   return window.fetch(url, config).then(async (response) => {
-    if (response.status === 401) {
+    if (response.status !== 200) {
       queryCache.clear();
 
       // refresh the page
       window.location.assign(window.location);
-      return Promise.reject({ message: "Please re-authenticate." });
+      return Promise.reject({ message: "Something went wrong." });
     }
     const data = await response.json();
     if (response.ok) {
