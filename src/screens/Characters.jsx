@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState, Suspense } from "react";
 import { usePaginatedCharacters } from "services/character";
 import CharacterList from "components/CharacterList";
 import CharacterItem from "components/CharacterItem";
@@ -23,11 +23,13 @@ const Characters = () => {
   return (
     <Container>
       <h1>The Rick and Morty Characters</h1>
-      <CharacterList>
-        {results?.map((character) => (
-          <CharacterItem {...character}></CharacterItem>
-        ))}
-      </CharacterList>
+      <Suspense fallback={<>loading images</>}>
+        <CharacterList>
+          {results?.map((character) => (
+            <CharacterItem key={character.id} {...character}></CharacterItem>
+          ))}
+        </CharacterList>
+      </Suspense>
     </Container>
   );
 };
