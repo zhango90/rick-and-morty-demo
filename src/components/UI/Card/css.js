@@ -5,4 +5,8 @@ export const cardWrapper = css`
   overflow: hidden;
   border: 2px #fff solid;
   padding: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: center;
 `;

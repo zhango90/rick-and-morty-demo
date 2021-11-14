@@ -2,9 +2,9 @@
 import { jsx } from "@emotion/react";
 import { buttonCss } from "./css";
 
-const Button = ({ children, ...rest }) => {
+const Button = ({ children, outline, ...rest }) => {
   return (
-    <button css={buttonCss} type="button" {...rest}>
+    <button css={buttonCss(outline)} type="button" {...rest}>
       {children}
     </button>
   );

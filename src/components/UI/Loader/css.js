@@ -12,7 +12,7 @@ export const loaderContainerCss = css`
   );
   display: grid;
   place-items: center;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 `;

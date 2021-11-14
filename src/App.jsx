@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React from "react";
+
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import Characters from "screens/Characters";

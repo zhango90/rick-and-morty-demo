@@ -4,7 +4,7 @@ const apiURL = process.env.REACT_APP_API_URL;
 
 export const client = async (
   endpoint,
-  { data, headers: customHeaders, ...customConfig } = {}
+  { data, headers: customHeaders, isCompleteUrl, ...customConfig } = {}
 ) => {
   const config = {
     method: data ? "POST" : "GET",
@@ -16,7 +16,7 @@ export const client = async (
     ...customConfig
   };
 
-  const url = `${apiURL}/${endpoint}`;
+  const url = isCompleteUrl ? endpoint : `${apiURL}/${endpoint}`;
 
   return window.fetch(url, config).then(async (response) => {
     if (response.status !== 200) {
@@ -35,6 +35,10 @@ export const client = async (
   });
 };
 
-export const useClient = () => {
-  return useCallback((endpoint, config) => client(endpoint, { ...config }), []);
+export const useClient = (initialCustomConfig) => {
+  return useCallback(
+    (endpoint, config) =>
+      client(endpoint, { ...config, ...initialCustomConfig }),
+    [initialCustomConfig]
+  );
 };

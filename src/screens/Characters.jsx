@@ -1,4 +1,4 @@
-import React, { useRef, useState, Suspense } from "react";
+import React, { Suspense } from "react";
 import { usePaginatedCharacters } from "services/character";
 import CharacterList from "components/Character/CharacterList";
 import CharacterItem from "components/Character/CharacterItem";
@@ -19,10 +19,14 @@ const Characters = () => {
     <Container>
       <h1>The Rick and Morty Characters</h1>
       <ButtonGroup>
-        <Button {...getPrevPageProps()}>prev</Button>
-        <Button {...getNextPageProps()}>next</Button>
+        <Button outline {...getPrevPageProps()}>
+          prev
+        </Button>
+        <Button outline {...getNextPageProps()}>
+          next
+        </Button>
       </ButtonGroup>
-      <Suspense fallback={<>loading images</>}>
+      <Suspense fallback={<></>}>
         <CharacterList>
           {results?.map((character) => (
             <CharacterItem key={character.id} {...character}></CharacterItem>
