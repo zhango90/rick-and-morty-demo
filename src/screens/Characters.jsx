@@ -1,20 +1,15 @@
 import React, { useRef, useState, Suspense } from "react";
 import { usePaginatedCharacters } from "services/character";
-import CharacterList from "components/CharacterList";
-import CharacterItem from "components/CharacterItem";
-import Loader from "components/Loader";
-import Container from "components/Container";
+import CharacterList from "components/Character/CharacterList";
+import CharacterItem from "components/Character/CharacterItem";
+import Loader from "components/UI/Loader";
+import Container from "components/UI/Container";
+import Button from "components/UI/Button";
+import ButtonGroup from "components/UI/ButtonGroup";
 //! instead of using h1 directly here we can refactor creating a typography component in order to manage all the tags related to strings
 const Characters = () => {
-  const {
-    info,
-    results,
-    isError,
-    isLoading,
-    isPreviousData,
-    handleNextPage,
-    handlePrevPage
-  } = usePaginatedCharacters();
+  const { results, isError, isLoading, getNextPageProps, getPrevPageProps } =
+    usePaginatedCharacters();
 
   if (isError) return <p>Something went wrong</p>;
 
@@ -23,6 +18,10 @@ const Characters = () => {
   return (
     <Container>
       <h1>The Rick and Morty Characters</h1>
+      <ButtonGroup>
+        <Button {...getPrevPageProps()}>prev</Button>
+        <Button {...getNextPageProps()}>next</Button>
+      </ButtonGroup>
       <Suspense fallback={<>loading images</>}>
         <CharacterList>
           {results?.map((character) => (

@@ -25,9 +25,6 @@ const imgCache = {
       throw this.__cache[src];
     }
     return this.__cache[src];
-  },
-  clearImg: (src) => {
-    delete this.__cache[src];
   }
 };
 

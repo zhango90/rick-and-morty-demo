@@ -30,14 +30,20 @@ export const usePaginatedCharacters = () => {
   };
   const handlePrevPage = () => setPage((old) => Math.max(old - 1, 0));
 
+  const getNextPageProps = () => ({
+    onClick: handleNextPage,
+    disabled: !info.next
+  });
+  const getPrevPageProps = () => ({
+    onClick: handlePrevPage,
+    disabled: !info.prev
+  });
+
   return {
-    info,
     results,
     isError,
     isLoading,
-    isFetching,
-    isPreviousData,
-    handleNextPage,
-    handlePrevPage
+    getNextPageProps,
+    getPrevPageProps
   };
 };

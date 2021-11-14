@@ -5,9 +5,16 @@ export const globalCss = css`
   ${normalize}
   html {
     font-size: 62.5%;
+    box-sizing: border-box;
   }
   body {
     font-size: 1.4rem;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
   }
 `;
 
