@@ -30,7 +30,7 @@ const CharacterInfo = ({ character, onClose }) => {
         <SuspenseImg css={characterInfoImgCss} src={image} alt={name} />
         <div>
           <h1>{name}</h1>
-          <h2>Informations</h2>
+          <h2>Information</h2>
           <p>
             <strong>Status:</strong> {status} - <strong>Species:</strong>{" "}
             {species} - <strong>Type:</strong> {type ? type : "Unknown"} -{" "}

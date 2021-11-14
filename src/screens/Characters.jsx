@@ -13,7 +13,7 @@ const Characters = () => {
 
   if (isError) return <p>Something went wrong</p>;
 
-  if (isLoading) return <Loader></Loader>;
+  if (isLoading) return <Loader data-testid="loader"></Loader>;
 
   return (
     <Container>

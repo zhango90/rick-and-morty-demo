@@ -2,9 +2,9 @@
 import { jsx } from "@emotion/react";
 
 import { loaderContainerCss, loaderCss } from "./css";
-const Loader = () => {
+const Loader = (props) => {
   return (
-    <div css={loaderContainerCss}>
+    <div css={loaderContainerCss} {...props}>
       <div css={loaderCss}>
         <div></div>
         <div></div>
